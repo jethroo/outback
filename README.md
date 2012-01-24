@@ -11,6 +11,16 @@ Outback configuration files are pure Ruby, so writing dynamic
 configurations or even customized backup sources and targets is a
 piece of cake.
 
+Installation
+------------
+
+Just run
+
+    $ gem install outback
+
+Then you can invoke outback from the command line:
+
+    $ outback --help
 
 A simple configuration example
 ------------------------------
