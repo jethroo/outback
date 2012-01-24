@@ -13,9 +13,6 @@ piece of cake.
 
 Installation
 ------------
-
-Just run
-
     $ gem install outback
 
 Then you can invoke outback from the command line:
@@ -86,7 +83,9 @@ include database passwords.
 
 Alternatively, you can pass in the configuration file to read as a
 commandline argument. The default configuration file in /etc will then be
-ignored.
+ignored:
+
+    $ outback ./my_config.rb
 
 If you have several backup configurations in a single file, say, for daily
 and monthly backups, you can use the `-c` commandline option to select the
@@ -124,3 +123,12 @@ write DRY configurations like this:
   end
 end
 ````
+
+Other commandline options are:
+
+* `-v` `--verbose` be talky
+* `-s` `--silent`  be silent
+* `-t` `--test`    test configuration, then exit
+* `-l` `--list`    list available configurations, then exit
+* `-h` `--help`    display help
+* `--version`      display version
