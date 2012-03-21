@@ -49,7 +49,7 @@ Outback::Configuration.new 'name' do
   target :s3 do
     access_key  'S3 access key'
     secret_key  'S3 secret key'
-    bucket      'bucketname'
+    bucket_name 'bucketname'
     prefix      'backups/daily'
 
     # Backups will be purged after the time specified here.
@@ -107,7 +107,7 @@ write DRY configurations like this:
     target :s3 do
       access_key  'foo'
       secret_key  'foo'
-      bucket      'somebucket'
+      bucket_name 'somebucket'
       prefix      "yourserver/#{frequency}"
       ttl         s3_ttl
     end

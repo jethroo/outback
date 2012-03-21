@@ -5,7 +5,7 @@ require 'tmpdir'
 
 require 'active_support/core_ext'
 
-require 'aws/s3'
+require 's3'
 
 require 'outback/vendor/mysql'
 require 'outback/vendor/metaclass'
@@ -55,6 +55,7 @@ module Outback
     def error(message, options = nil)
       return if silent?
       puts "Outback error: #{message}"
+      false
     end
   end
 end

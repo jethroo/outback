@@ -41,6 +41,7 @@ module Outback
         commandline = "mysqldump --defaults-extra-file=#{mysql_conf_file} --opt --user=#{user} --host=#{mysql_host} --port=#{mysql_port} #{database} | gzip > #{archive_name}"
         result = `#{commandline}`.strip
         Outback.debug(result) unless result.blank?
+        Outback.info "Archived database #{database}"
         TempArchive.new(archive_name, self).tap { |archive| Outback.debug "dumped #{archive.filename.basename} with #{archive.size} bytes" }
       end
     end

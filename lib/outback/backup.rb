@@ -15,6 +15,7 @@ module Outback
       begin
         @tmpdir = Dir.mktmpdir([name, timestamp])
         @archives = create_archives
+        Outback.info "Created #{@archives.size} archives"
         store_archives
       ensure
         FileUtils.remove_entry_secure(tmpdir)

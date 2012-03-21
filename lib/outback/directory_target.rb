@@ -11,6 +11,10 @@ module Outback
       (user and group) or (not user and not group)
     end
     
+    def display_name
+      "directory:#{path}"
+    end
+    
     def put(archives)
       Dir.mkdir(path) unless path.directory?
       FileUtils.chmod directory_permissions || 0700, path
@@ -33,7 +37,8 @@ module Outback
         end
         size += archived_file.size
       end
-      Outback.debug "#{move ? 'Moved' : 'Copied'} #{archives.size} archives (#{size} bytes) to directory #{path}"
+      Outback.info "#{move ? 'Moved' : 'Copied'} #{archives.size} archives (#{size} bytes) to #{display_name}"
+      archives.size
     end
 
     def list_archives(name)

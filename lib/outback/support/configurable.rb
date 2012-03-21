@@ -3,6 +3,8 @@ module Outback
     
     def self.included(base)
       base.extend ClassMethods
+      base.class_attribute :attributes
+      base.attributes = []
     end
     
     module ClassMethods
@@ -17,10 +19,6 @@ module Outback
       def attr_setter(*names)
         attributes.concat(names).uniq!
         names.each { |name| attr_reader name }
-      end
-      
-      def attributes
-        read_inheritable_attribute(:attributes) || write_inheritable_attribute(:attributes, [])
       end
       
     end

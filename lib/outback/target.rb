@@ -7,7 +7,15 @@ module Outback
     end
     
     def purge!(name)
-      outdated_archives(name).each &:purge!
+      size = count = 0
+      outdated_archives(name).each do |archive|
+        archive_size = archive.size
+        if archive.purge!
+          count += 1
+          size += archive_size
+        end
+      end
+      Outback.info "Purged #{count} archives (#{size} bytes) from #{display_name}"
     end
   
   end
