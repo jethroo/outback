@@ -42,7 +42,12 @@ module Outback
           Outback.error "Configuration Error! #{conf_error}"
           exit(1)
         rescue Exception => e
-          Outback.error "Error loading config file: #{e}"
+          regexp = /#{Regexp.escape(config_file)}:(\d+)/
+          match_data = nil
+          if e.backtrace.detect { |line| match_data = line.match(regexp) }
+            line_info = " on line #{match_data.captures.first}"
+          end
+          Outback.error "Error loading config file: #{e}#{line_info}"
           exit(1)
         end
         if Outback::Configuration.loaded.empty?

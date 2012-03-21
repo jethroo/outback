@@ -6,7 +6,7 @@ end
  
 class It
  
-  undef_method(*(instance_methods - %w*__id__ __send__*))
+  undef_method(*(instance_methods - ['__id__', '__send__', :__id__, :__send__]))
  
   def initialize
     @methods = []

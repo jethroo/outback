@@ -1,7 +1,8 @@
-*0.0.8 (March 21, 2012)*
+*0.0.9 (March 21, 2012)*
 
 * Removed aws-s3 gem in favour of s3 gem
 * changed bucket to bucket_name in S3 target configuration
+* print line number in case of config errors
 
 *0.0.7 (March 12, 2012)*
 
