@@ -22,7 +22,7 @@ module Outback
       source_dir = Pathname.new(path).realpath
       archive_name = Pathname.new(tmpdir).join("#{backup_name}_#{timestamp}_#{source_name}.tar.gz")
       exclude_list = Pathname.new(tmpdir).join('exclude_list.txt')
-      File.open(exclude_list, 'w') { |f| f << excludes.join("\n") }
+      File.open(exclude_list, 'w') { |f| f << excludes.map { |e| e.to_s.sub(/\A\//, '') }.join("\n") }
       verbose_switch = Outback.verbose? ? 'v' : ''
       commandline = "tar -cz#{verbose_switch}pf #{archive_name} --exclude-from=#{exclude_list} --directory=/ #{source_dir.to_s.sub(/\A\//, '')}"
       Outback.debug "executing command: #{commandline}"

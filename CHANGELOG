@@ -1,3 +1,8 @@
+*0.0.11 (March 26, 2012)*
+
+* Fix broken tar call, which ignored exclude option
+* Fix exclude file paths
+
 *0.0.9 (March 21, 2012)*
 
 * Removed aws-s3 gem in favour of s3 gem
