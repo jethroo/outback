@@ -23,7 +23,8 @@ module Outback
       archive_name = Pathname.new(tmpdir).join("#{backup_name}_#{timestamp}_#{source_name}.tar.gz")
       exclude_list = Pathname.new(tmpdir).join('exclude_list.txt')
       File.open(exclude_list, 'w') { |f| f << excludes.join("\n") }
-      commandline = "tar --create --file #{archive_name} --preserve-permissions --gzip --exclude-from #{exclude_list} --directory / #{source_dir.to_s.sub(/\A\//, '')}"
+      verbose_switch = Outback.verbose? ? 'v' : ''
+      commandline = "tar -cz#{verbose_switch}pf #{archive_name} --exclude-from=#{exclude_list} --directory=/ #{source_dir.to_s.sub(/\A\//, '')}"
       Outback.debug "executing command: #{commandline}"
       result = `#{commandline}`
       Outback.debug "result: #{result}"
