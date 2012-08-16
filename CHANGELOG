@@ -1,3 +1,8 @@
+*0.0.12 (August 16, 2012)*
+
+* Fix warning caused by methodphitamine.rb
+* Require at least Ruby 1.9.1
+
 *0.0.11 (March 26, 2012)*
 
 * Fix broken tar call, which ignored exclude option
