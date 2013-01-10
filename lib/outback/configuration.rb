@@ -1,9 +1,5 @@
 module Outback
   class Configuration
-    include Configurable
-    
-    attr_setter :tmpdir
-  
     @loaded = []
 
     class << self
@@ -47,6 +43,18 @@ module Outback
       true
     end
     
+    def tmpdir(*args)
+      if args.empty?
+        @tmpdir
+      elsif args.size == 1
+        dir = Pathname.new(args.first).realpath
+        raise(ConfigurationError.new("tmpdir #{dir} is no directory")) unless dir.directory?
+        @tmpdir = dir
+      else
+        raise ConfigurationError.new("tmpdir: wrong number of arguments(#{args.size} for 1)")
+      end
+    end
+
     protected
 
     def source(type, *args, &block)
