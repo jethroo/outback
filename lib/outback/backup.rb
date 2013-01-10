@@ -13,7 +13,7 @@ module Outback
     def run!
       @archives  = []
       begin
-        @tmpdir = Dir.mktmpdir([name, timestamp])
+        @tmpdir = Dir.mktmpdir([name, timestamp], configuration.tmpdir)
         @archives = create_archives
         Outback.info "Created #{@archives.size} archives"
         store_archives
