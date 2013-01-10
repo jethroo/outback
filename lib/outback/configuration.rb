@@ -34,16 +34,6 @@ module Outback
       self.class.add(self)
     end
 
-    protected
-
-    def source(type, *args, &block)
-      "Outback::#{type.to_s.classify}Source".constantize.configure(*args, &block).tap { |instance| sources << instance }
-    end
-    
-    def target(type, *args, &block)
-      "Outback::#{type.to_s.classify}Target".constantize.configure(*args, &block).tap { |instance| targets << instance }
-    end
-  
     def valid?
       errors.clear
       return error('no targets specified') if targets.empty?
@@ -53,6 +43,16 @@ module Outback
       true
     end
     
+    protected
+
+    def source(type, *args, &block)
+      "Outback::#{type.to_s.classify}Source".constantize.configure(*args, &block).tap { |instance| sources << instance }
+    end
+    
+    def target(type, *args, &block)
+      "Outback::#{type.to_s.classify}Target".constantize.configure(*args, &block).tap { |instance| targets << instance }
+    end
+
     def error(message)
       errors << ConfigurationError.new(message)
       false
