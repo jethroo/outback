@@ -45,6 +45,11 @@ module Outback
     
     protected
 
+    def tmpdir(dir = nil)
+      @tmpdir = dir if dir
+      @tmpdir
+    end
+
     def source(type, *args, &block)
       "Outback::#{type.to_s.classify}Source".constantize.configure(*args, &block).tap { |instance| sources << instance }
     end
