@@ -28,7 +28,7 @@ instantiated during a single run.
 
 ```` ruby
 Outback::Configuration.new 'name' do
-  source :directory, '/ver/www' do
+  source :directory, '/var/www' do
     exclude '/var/www/foo'
     exclude '/var/www/icons/*.png'
   end
