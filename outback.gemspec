@@ -8,12 +8,14 @@ Gem::Specification.new do |s|
   s.email         = 'admin@onrooby.com'
   s.files         = Dir['{lib}/**/*.rb', 'bin/*', 'MIT-LICENSE', 'VERSION', 'README.md', 'CHANGELOG']
   s.require_path  = 'lib'
-  s.homepage      = 'http://rubygems.org/gems/outback'  
+  s.homepage      = 'http://rubygems.org/gems/outback'
 
   s.executables << 'outback'
 
-  s.required_ruby_version = '>= 1.9.1'  
+  s.required_ruby_version = '>= 1.9.1'
 
   s.add_dependency 's3'
   s.add_dependency 'activesupport', '>= 3.0.0'
+
+  s.add_development_dependency "rspec"
 end
